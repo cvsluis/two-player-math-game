@@ -27,6 +27,13 @@ class Game
 
   end
 
+  def game_over(winner)
+    puts "🏆🎉 #{winner.name} wins with a score of #{winner.lives}/3"
+    puts "----- GAME OVER -----"
+    puts "Good bye! 👋"
+    @play = false
+  end
+
   def play(name1, name2)
     player_one = Player.new(name1)
     player_two = Player.new(name2)
@@ -36,11 +43,10 @@ class Game
       ask_question(current_player)
       puts "👾 #{player_one.name}: #{player_one.lives}/3 vs #{player_two.name}: #{player_two.lives}/3"
     
-      if player_one.dead? || player_two.dead?
-        puts (player_one.dead? && "🏆🎉 #{player_two.name} wins with a score of #{player_two.lives}/3") || (player_two.dead? && "🏆🎉 #{player_one.name} wins with a score of #{player_one.lives}/3")
-        puts "----- GAME OVER -----"
-        puts "Good bye! 👋"
-        @play = false
+      if player_one.dead?
+        game_over(player_two)
+      elsif player_two.dead?
+        game_over(player_one)
       end
 
     end
