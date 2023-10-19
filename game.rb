@@ -13,7 +13,7 @@ class Game
 
   def ask_question(player)
     puts "\n----- NEW TURN -----"
-    question = Question.new()
+    question = Question.new
     puts "#{player.name}: " + question.string
     player_answer = gets.chomp
 
