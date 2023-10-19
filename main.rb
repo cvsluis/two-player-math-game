@@ -13,5 +13,5 @@ player_two = player_two.strip == '' ? "Player 2" : player_two
 
 puts "#{player_one} starts!"
 
-game_one = Game.new()
+game_one = Game.new
 game_one.play(player_one, player_two)
